@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class BasicPaswword extends StatefulWidget {
+class BasicPassword extends StatefulWidget {
   final String labelText;
   final Icon icon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
 
-  const BasicPaswword(
+  const BasicPassword(
       {super.key,
       required this.labelText,
       required this.icon,
@@ -14,10 +14,10 @@ class BasicPaswword extends StatefulWidget {
       this.validator});
 
   @override
-  State<BasicPaswword> createState() => _BasicPaswwordState();
+  State<BasicPassword> createState() => _BasicPasswordState();
 }
 
-class _BasicPaswwordState extends State<BasicPaswword> {
+class _BasicPasswordState extends State<BasicPassword> {
   bool vista = false;
   @override
   void initState() {
