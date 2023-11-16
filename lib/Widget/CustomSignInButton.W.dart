@@ -15,16 +15,16 @@ class CustomSignInButton extends StatelessWidget {
         backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(15),
           ),
         ),
         overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
       ),
       child: Container(
-        height: 55,
-        width: 300,
+        height: 40,
+        width: 150,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
           gradient: const LinearGradient(colors: [
             Color.fromARGB(255, 111, 16, 139),
             Color(0xff281537),
@@ -35,7 +35,7 @@ class CustomSignInButton extends StatelessWidget {
             text,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 15,
               color: Colors.white,
             ),
           ),

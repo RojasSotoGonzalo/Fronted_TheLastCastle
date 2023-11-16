@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:frontendthelastcastle/Pages/Start/Start.S.dart';
 
-import '../Login/Login.L.dart';
+import 'Search.C.dart';
+import 'Start.C.dart';
+import 'Trolley.C.dart';
 
-class MyHome extends StatefulWidget {
-  const MyHome({super.key});
+class CustomerHome extends StatefulWidget {
+  const CustomerHome({super.key});
 
   @override
-  State<MyHome> createState() => _MyHomeState();
+  State<CustomerHome> createState() => _CustomerHomeState();
 }
 
-class _MyHomeState extends State<MyHome> {
+class _CustomerHomeState extends State<CustomerHome> {
   int index = 0;
-  List pages = [Start(), Login()];
+  List pages = [Start(), SerachI(), Trolley()];
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        AppBar(),
         Scaffold(
           body: pages[index],
         ),
@@ -42,12 +44,15 @@ class _MyHomeState extends State<MyHome> {
                 onTap: (i) {
                   setState(() {
                     index = i;
-                    print(i);
                   });
                 },
                 items: const [
                   BottomNavigationBarItem(
                       icon: Icon(Icons.home), label: "Inicio"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.search), label: "Busqueda"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.shopping_cart), label: "Carrito"),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.logout_outlined), label: "Login"),
                 ],

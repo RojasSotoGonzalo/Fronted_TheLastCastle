@@ -1,16 +1,8 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../Widget/BasicText.W.dart';
-import '../../Widget/BasicPaswword.W.dart';
-import '../../Widget/CustomSignInButton.W.dart';
+class Signup extends StatelessWidget {
+  const Signup({super.key});
 
-class Login extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  Login({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

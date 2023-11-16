@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'Pages/Login/Login.L.dart';
 import 'Pages/Start/Home.S.dart';
 
 void main() => runApp(const AppState());
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'Home',
       routes: {
         'Home': (context) => const MyHome(),
+        'login': (context) => Login()
       },
       home: Scaffold(
         appBar: AppBar(
