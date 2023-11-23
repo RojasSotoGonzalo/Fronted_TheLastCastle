@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'Pages/Customer/CustomerHome.C.dart';
 import 'Pages/Login/Login.L.dart';
+import 'Pages/Signup/Signup.S.dart';
 import 'Pages/Start/Home.S.dart';
 
 void main() => runApp(const AppState());
@@ -22,19 +24,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce',
-      initialRoute: 'Home',
+      initialRoute: 'HomeCus',
       routes: {
         'Home': (context) => const MyHome(),
-        'login': (context) => Login()
+        'login': (context) => Login(),
+        'signup': (context) => Signup(),
+        'HomeCus': (context) => const CustomerHome(),
       },
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
     );
   }
 }

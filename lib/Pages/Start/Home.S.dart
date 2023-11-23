@@ -12,7 +12,7 @@ class MyHome extends StatefulWidget {
 
 class _MyHomeState extends State<MyHome> {
   int index = 0;
-  List pages = [Start(), Login()];
+  List pages = [const Start(), Login()];
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -42,7 +42,6 @@ class _MyHomeState extends State<MyHome> {
                 onTap: (i) {
                   setState(() {
                     index = i;
-                    print(i);
                   });
                 },
                 items: const [

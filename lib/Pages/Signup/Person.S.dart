@@ -1,16 +1,22 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../Widget/BasicText.W.dart';
-import '../../Widget/BasicPaswword.W.dart';
 import '../../Widget/CustomSignInButton.W.dart';
 
-class Login extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+class Person extends StatelessWidget {
+  final String user;
+  final String email;
+  final String password;
+  Person(
+      {super.key,
+      required this.user,
+      required this.email,
+      required this.password});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  Login({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +36,7 @@ class Login extends StatelessWidget {
             child: const Padding(
               padding: EdgeInsets.only(top: 60.0, left: 22),
               child: Text(
-                'Login\nDesea Iniciar Sesión',
+                'Signup\nDesea Crear un Nuevo Usuario',
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.white,
@@ -60,13 +66,16 @@ class Login extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          const SizedBox(
+                            height: 15,
+                          ),
                           BasicText(
-                            labelText: 'Correo Electrónico',
-                            icon: const Icon(Icons.email),
-                            controller: emailController,
+                            labelText: 'Nombre',
+                            icon: const Icon(Icons.person),
+                            controller: nameController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Por favor, ingrese su correo electrónico';
+                                return 'Por favor, ingrese su nombre';
                               }
                               return null;
                             },
@@ -74,39 +83,47 @@ class Login extends StatelessWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          BasicPassword(
-                            labelText: 'Contraseña',
-                            icon: const Icon(Icons.lock),
-                            controller: passwordController,
+                          BasicText(
+                            labelText: 'Apellido',
+                            icon: const Icon(Icons.person),
+                            controller: lastNameController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Por favor, ingrese su contraseña';
+                                return 'Por favor, ingrese su apellido';
                               }
                               return null;
                             },
                           ),
                           const SizedBox(
-                            height: 25,
+                            height: 15,
                           ),
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: RichText(
-                              text: TextSpan(
-                                text: '¿Olvidaste tu Contraseña?',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  color: Color.fromARGB(255, 127, 36, 196),
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    // Manejar la acción del enlace aquí
-                                  },
-                              ),
-                            ),
+                          BasicText(
+                            labelText: 'Teléfono',
+                            icon: const Icon(Icons.phone),
+                            controller: phoneController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Por favor, ingrese su teléfono';
+                              }
+                              return null;
+                            },
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 15,
+                          ),
+                          BasicText(
+                            labelText: 'Dirección',
+                            icon: const Icon(Icons.home),
+                            controller: addressController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Por favor, ingrese su dirección';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 40,
                           ),
                           orientation == Orientation.portrait
                               ? Column(
@@ -115,19 +132,19 @@ class Login extends StatelessWidget {
                                     CustomSignInButton(
                                       onPress: () {
                                         if (formKey.currentState!.validate()) {
-                                          // Lógica para manejar el inicio de sesión aquí
+                                          // Lógica para manejar la creación de usuario aquí
                                         }
                                       },
-                                      text: 'Iniciar Sesión',
+                                      text: 'Continuar',
                                     ),
                                     const SizedBox(
                                       height: 15,
                                     ),
                                     CustomSignInButton(
                                       onPress: () {
-                                        Navigator.pushNamed(context, 'signup');
+                                        Navigator.pushNamed(context, 'Home');
                                       },
-                                      text: 'Crear Usuario',
+                                      text: 'Cancelar',
                                     ),
                                   ],
                                 )
@@ -138,23 +155,20 @@ class Login extends StatelessWidget {
                                   children: [
                                     CustomSignInButton(
                                       onPress: () {
-                                        if (formKey.currentState!.validate()) {
-                                          // Lógica para manejar el inicio de sesión aquí
-                                        }
+                                        Navigator.pushNamed(context, 'Home');
                                       },
-                                      text: 'Iniciar Sesión',
+                                      text: 'Cancelar',
                                     ),
                                     CustomSignInButton(
                                       onPress: () {
-                                        Navigator.pushNamed(context, 'signup');
+                                        if (formKey.currentState!.validate()) {
+                                          // Lógica para manejar la creación de usuario aquí
+                                        }
                                       },
-                                      text: 'Crear Usuario',
+                                      text: 'Continuar',
                                     ),
                                   ],
                                 ),
-                          const SizedBox(
-                            height: 150,
-                          ),
                         ],
                       ),
                     ),

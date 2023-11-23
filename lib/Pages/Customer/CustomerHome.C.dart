@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontendthelastcastle/Pages/Customer/UserC.C.dart';
 
 import 'Search.C.dart';
 import 'Start.C.dart';
@@ -13,12 +14,25 @@ class CustomerHome extends StatefulWidget {
 
 class _CustomerHomeState extends State<CustomerHome> {
   int index = 0;
-  List pages = [Start(), SerachI(), Trolley()];
+  List pages = const [
+    Start(),
+    SerachI(),
+    Trolley(),
+    UserCustomer(
+      nombre: 'Gonzalo',
+      apellido: 'Rojas',
+      email: 'adrew@gmail.com',
+      direccion: 'calle 2 valtarosa',
+      telefono: '74745257',
+      carnet: '5768834',
+      user: 'alis',
+      password: '123455',
+    )
+  ];
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        AppBar(),
         Scaffold(
           body: pages[index],
         ),
@@ -54,7 +68,7 @@ class _CustomerHomeState extends State<CustomerHome> {
                   BottomNavigationBarItem(
                       icon: Icon(Icons.shopping_cart), label: "Carrito"),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.logout_outlined), label: "Login"),
+                      icon: Icon(Icons.person), label: "Usuario"),
                 ],
               ),
             ),
