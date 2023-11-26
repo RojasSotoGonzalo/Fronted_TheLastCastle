@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import '../../Widget/BasicText.W.dart';
 import '../../Widget/BasicPaswword.W.dart';
@@ -11,41 +12,46 @@ class Login extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Login({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 178, 50, 218),
-                  Color(0xff281537),
-                ],
-              ),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.only(top: 60.0, left: 22),
-              child: Text(
-                'Login\nDesea Iniciar Sesión',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+      body: KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
+        return SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 178, 50, 218),
+                      Color(0xff281537),
+                    ],
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.only(top: 60.0, left: 22),
+                  child: Text(
+                    'Login\nDesea Iniciar Sesión',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 150.0),
-            child: Form(
-              key: formKey,
-              child: OrientationBuilder(
-                builder: (context, orientation) {
-                  return Container(
+              Padding(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.2,
+                  left: 18.0,
+                  right: 18,
+                ),
+                child: Form(
+                  key: formKey,
+                  child: Container(
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
@@ -53,10 +59,10 @@ class Login extends StatelessWidget {
                       ),
                       color: Colors.white,
                     ),
-                    height: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.8,
                     width: double.infinity,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 18.0, right: 18),
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -71,9 +77,7 @@ class Login extends StatelessWidget {
                               return null;
                             },
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          const SizedBox(height: 15),
                           BasicPassword(
                             labelText: 'Contraseña',
                             icon: const Icon(Icons.lock),
@@ -85,9 +89,7 @@ class Login extends StatelessWidget {
                               return null;
                             },
                           ),
-                          const SizedBox(
-                            height: 25,
-                          ),
+                          const SizedBox(height: 25),
                           Container(
                             alignment: Alignment.centerRight,
                             child: RichText(
@@ -105,66 +107,66 @@ class Login extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 30,
+                          const SizedBox(height: 30),
+                          OrientationBuilder(
+                            builder: (context, orientation) {
+                              return orientation == Orientation.portrait
+                                  ? Column(
+                                      children: [
+                                        CustomSignInButton(
+                                          onPress: () {
+                                            if (formKey.currentState!
+                                                .validate()) {
+                                              // Lógica para manejar el inicio de sesión aquí
+                                            }
+                                          },
+                                          text: 'Iniciar Sesión',
+                                        ),
+                                        const SizedBox(height: 15),
+                                        CustomSignInButton(
+                                          onPress: () {
+                                            Navigator.pushNamed(
+                                                context, 'signup');
+                                          },
+                                          text: 'Crear Usuario',
+                                        ),
+                                      ],
+                                    )
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        CustomSignInButton(
+                                          onPress: () {
+                                            if (formKey.currentState!
+                                                .validate()) {
+                                              // Lógica para manejar el inicio de sesión aquí
+                                            }
+                                          },
+                                          text: 'Iniciar Sesión',
+                                        ),
+                                        CustomSignInButton(
+                                          onPress: () {
+                                            Navigator.pushNamed(
+                                                context, 'signup');
+                                          },
+                                          text: 'Crear Usuario',
+                                        ),
+                                      ],
+                                    );
+                            },
                           ),
-                          orientation == Orientation.portrait
-                              ? Column(
-                                  // Vertical
-                                  children: [
-                                    CustomSignInButton(
-                                      onPress: () {
-                                        if (formKey.currentState!.validate()) {
-                                          // Lógica para manejar el inicio de sesión aquí
-                                        }
-                                      },
-                                      text: 'Iniciar Sesión',
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    CustomSignInButton(
-                                      onPress: () {
-                                        Navigator.pushNamed(context, 'signup');
-                                      },
-                                      text: 'Crear Usuario',
-                                    ),
-                                  ],
-                                )
-                              : Row(
-                                  // Horizontal
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    CustomSignInButton(
-                                      onPress: () {
-                                        if (formKey.currentState!.validate()) {
-                                          // Lógica para manejar el inicio de sesión aquí
-                                        }
-                                      },
-                                      text: 'Iniciar Sesión',
-                                    ),
-                                    CustomSignInButton(
-                                      onPress: () {
-                                        Navigator.pushNamed(context, 'signup');
-                                      },
-                                      text: 'Crear Usuario',
-                                    ),
-                                  ],
-                                ),
-                          const SizedBox(
-                            height: 150,
-                          ),
+                          const SizedBox(height: 150),
                         ],
                       ),
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        );
+      }),
     );
   }
 }
