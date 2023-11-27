@@ -5,6 +5,7 @@ import 'package:frontendthelastcastle/firebase_options.dart';
 
 import 'Pages/Customer/CustomerHome.C.dart';
 import 'Pages/Employee/EmployeeHome.C.dart';
+import 'Pages/Employee/tipo/Tipo.T.dart';
 import 'Pages/Login/Login.L.dart';
 import 'Pages/Signup/Signup.S.dart';
 import 'Pages/Start/Home.S.dart';
@@ -14,7 +15,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const AppState());
+  runApp(const ProviderScope(
+    child: MyApp(),
+  ));
 }
 
 class AppState extends StatelessWidget {
