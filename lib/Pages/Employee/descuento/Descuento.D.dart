@@ -1,21 +1,19 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../Controller/ControllerTipoDeProducto.Con.Dart';
-import 'ListTipoDeProducto.T.dart';
-
-class Tipo extends ConsumerWidget {
-  const Tipo({super.key});
+class Descuento extends ConsumerWidget {
+  const Descuento({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final tipoDeProductoList = ref.watch(tipoDeProductoProvider);
+  Widget build(BuildContext context   WidgetRef ref) {
+    final tipoDeProductoList = ref.watch(DescuentoProvider);
 
     return Scaffold(
       body: tipoDeProductoList.when(
         data: (tiposList) {
           if (tiposList.isNotEmpty) {
-            return ListTipoDeProducto(tiposList: tiposList);
+            return ListDescuento(tiposList: tiposList);
           } else {
             return const Center(
               child: Text('No hay Tipos de Producto Agregados'),
@@ -31,10 +29,7 @@ class Tipo extends ConsumerWidget {
         backgroundColor: Colors.black,
         onPressed: () {
           // Cambia a la página para agregar un nuevo tipo de producto
-          Navigator.pushNamed(context, 'nuevoTipo').then((value) {
-            // Recarga el proveedor cuando se vuelve de la página 'nuevoTipo'
-            ref.refresh(tipoDeProductoProvider);
-          });
+          Navigator.pushNamed(context, 'nuevoTipo');
         },
         child: const Icon(
           Icons.add_circle_outline_outlined,
@@ -44,4 +39,4 @@ class Tipo extends ConsumerWidget {
       ),
     );
   }
-}
+}*/

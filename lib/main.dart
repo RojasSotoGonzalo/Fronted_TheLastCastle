@@ -5,7 +5,7 @@ import 'package:frontendthelastcastle/firebase_options.dart';
 
 import 'Pages/Customer/CustomerHome.C.dart';
 import 'Pages/Employee/EmployeeHome.C.dart';
-import 'Pages/Employee/tipo/Tipo.T.dart';
+import 'Pages/Employee/tipo/NuevoTipo.T.dart';
 import 'Pages/Login/Login.L.dart';
 import 'Pages/Signup/Signup.S.dart';
 import 'Pages/Start/Home.S.dart';
@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         'signup': (context) => Signup(),
         'HomeCus': (context) => const CustomerHome(),
         'HomeEmp': (context) => const EmployyeHome(),
+        'nuevoTipo': (context) => const CreateTipo(),
       },
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:frontendthelastcastle/Models/TipoDeProducto.M.dart';
+
+import '../../../Controller/ControllerTipoDeProducto.Con.Dart';
+import '../../../Models/TipoDeProducto.M.dart';
 
 class ListTipoDeProducto extends ConsumerWidget {
   const ListTipoDeProducto({Key? key, required this.tiposList})
@@ -9,6 +11,11 @@ class ListTipoDeProducto extends ConsumerWidget {
   final List<TipoDeProducto> tiposList;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    Future<void> eliminarTipoDeProducto(String tipoId) async {
+      await deleteTipoDeProducto(tipoId);
+      ref.refresh(tipoDeProductoProvider);
+    }
+
     return ListView.builder(
       itemCount: tiposList.length,
       itemBuilder: (BuildContext context, int index) {
@@ -52,7 +59,16 @@ class ListTipoDeProducto extends ConsumerWidget {
                         // Puedes agregar más detalles del tipo aquí si es necesario
                       ],
                     ),
-                    // Puedes agregar más elementos si es necesario
+                    // Agrega un icono de eliminar
+                    GestureDetector(
+                      onTap: () {
+                        eliminarTipoDeProducto(tipo.idProductOfKind);
+                      },
+                      child: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -62,24 +78,4 @@ class ListTipoDeProducto extends ConsumerWidget {
       },
     );
   }
-}
-
-void showErrorDialog(BuildContext context, String errorMessage) {
-  showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text('Eliminacion correcta'),
-        content: Text(errorMessage),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(); // Cerrar el AlertDialog
-            },
-            child: const Text('Aceptar'),
-          ),
-        ],
-      );
-    },
-  );
 }
