@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontendthelastcastle/Pages/Customer/UserC.C.dart';
 
-import 'Search.C.dart';
 import 'Start.C.dart';
 import 'Trolley.C.dart';
 
@@ -16,7 +15,6 @@ class _CustomerHomeState extends State<CustomerHome> {
   int index = 0;
   List pages = const [
     Start(),
-    SerachI(),
     Trolley(),
     UserCustomer(
       nombre: 'Gonzalo',

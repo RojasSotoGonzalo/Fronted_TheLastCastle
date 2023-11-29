@@ -31,7 +31,7 @@ class _EditorTipoState extends State<EditorTipo> {
             child: Column(children: [
               const Center(
                 child: Text(
-                  'Tipo de Producto Actuales',
+                  'Tipo de Producto Actual',
                   style: TextStyle(fontSize: 25, color: Colors.grey),
                 ),
               ),

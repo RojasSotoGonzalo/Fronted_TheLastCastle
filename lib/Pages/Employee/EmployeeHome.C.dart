@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontendthelastcastle/Pages/Employee/ejemplo.c.dart';
 
+import 'categoria/Categoria.E.dart';
+
 import 'tipo/Tipo.T.dart';
 
 class EmployyeHome extends StatefulWidget {
@@ -13,7 +15,7 @@ class EmployyeHome extends StatefulWidget {
 class _EmployyeHomeState extends State<EmployyeHome> {
   int selectedIndex = 0;
   final PageController _pageController = PageController();
-  final List<Widget> pages = const [efe(), Tipo()];
+  final List<Widget> pages = const [efe(), Tipo(), Categ()];
 
   void _onItemTapped(int index) {
     setState(() {
