@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import '../Connection/Base.C.dart';
 import '../Models/TipoDeProducto.M.dart';
-final tipoDeProductoProvider = FutureProvider<List<TipoDeProducto>>((ref) async {
+
+final tipoDeProductoProvider =
+    FutureProvider<List<TipoDeProducto>>((ref) async {
   try {
     final response = await http.get(Uri.parse('$baseUrl/tipodeproducto'));
 
@@ -21,8 +23,7 @@ final tipoDeProductoProvider = FutureProvider<List<TipoDeProducto>>((ref) async 
 final tipoDeProductoByIdProvider =
     FutureProvider.family<TipoDeProducto, String>((ref, id) async {
   try {
-    final response =
-        await http.get(Uri.parse('$baseUrl/tipodeproducto/$id'));
+    final response = await http.get(Uri.parse('$baseUrl/tipodeproducto/$id'));
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
@@ -55,7 +56,7 @@ Future<String> createTipoDeProducto(String kindOfProduct) async {
 
 Future<void> deleteTipoDeProducto(String tipoId) async {
   final url = Uri.parse('$baseUrl/tipodeproducto/$tipoId');
-  
+
   try {
     final response = await http.delete(
       url,
@@ -67,11 +68,28 @@ Future<void> deleteTipoDeProducto(String tipoId) async {
       print('Tipo de producto eliminado exitosamente');
     } else {
       // La solicitud DELETE falló
-     throw Exception(
-          'POST request failed with status: ${response.statusCode}');
+      throw Exception(
+          'Error al eliminar el tipo de producto. Código de estado: ${response.statusCode}');
     }
   } catch (e) {
     // Error general al hacer la solicitud DELETE
-    print('Error al realizar la solicitud DELETE: $e');
+    throw Exception('Error al realizar la solicitud DELETE: $e');
+  }
+}
+
+Future<String> updateTipoDeProducto(String tipoId, String kindOfProduct) async {
+  final url = Uri.parse('$baseUrl/tipodeproducto/$tipoId');
+  final headers = {'Content-Type': 'application/json'};
+  final body = json.encode({'kindOfProduct': kindOfProduct});
+
+  try {
+    final response = await http.put(url, headers: headers, body: body);
+    if (response.statusCode == 200) {
+      return '¡Actualización exitosa!';
+    } else {
+      throw Exception('PUT request failed with status: ${response.statusCode}');
+    }
+  } catch (e) {
+    throw Exception('Error making PUT request: $e');
   }
 }

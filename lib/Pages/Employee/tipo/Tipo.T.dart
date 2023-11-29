@@ -1,7 +1,9 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../Controller/ControllerTipoDeProducto.Con.Dart';
+import '../../../Controller/ControllerTipoDeProducto.Con.dart';
 import 'ListTipoDeProducto.T.dart';
 
 class Tipo extends ConsumerWidget {

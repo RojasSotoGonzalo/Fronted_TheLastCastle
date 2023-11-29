@@ -1,8 +1,12 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../Controller/ControllerTipoDeProducto.Con.Dart';
+import '../../../Controller/ControllerTipoDeProducto.Con.dart';
 import '../../../Models/TipoDeProducto.M.dart';
+
+import 'EditarTipoDeproducto.T.dart';
 
 class ListTipoDeProducto extends ConsumerWidget {
   const ListTipoDeProducto({Key? key, required this.tiposList})
@@ -24,6 +28,16 @@ class ListTipoDeProducto extends ConsumerWidget {
         return GestureDetector(
           onTap: () {
             // Agrega la lógica que desees cuando se toque un elemento de la lista
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EditorTipo(
+                  id: tipo.idProductOfKind,
+                  name: tipo.kindOfProduct,
+                ),
+              ),
+            );
+            ref.refresh(tipoDeProductoProvider);
           },
           child: Container(
             width: MediaQuery.of(context).size.width,
