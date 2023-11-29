@@ -3,6 +3,7 @@ import 'package:frontendthelastcastle/Pages/Employee/ejemplo.c.dart';
 
 import 'categoria/Categoria.E.dart';
 
+import 'descuento/Descuento.D.dart';
 import 'tipo/Tipo.T.dart';
 
 class EmployyeHome extends StatefulWidget {
@@ -15,7 +16,7 @@ class EmployyeHome extends StatefulWidget {
 class _EmployyeHomeState extends State<EmployyeHome> {
   int selectedIndex = 0;
   final PageController _pageController = PageController();
-  final List<Widget> pages = const [efe(), Tipo(), Categ()];
+  final List<Widget> pages = const [efe(), Tipo(), Categ(), Descuen()];
 
   void _onItemTapped(int index) {
     setState(() {

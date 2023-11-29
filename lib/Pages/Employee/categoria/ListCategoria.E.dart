@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:frontendthelastcastle/Controller/ControllerCategoria.Con.dart';
 
+import '../../../Controller/ControllerCategoria.Con.dart';
 import '../../../Models/Categoria.M.dart';
 import 'EditarCategoria.E.dart';
 
