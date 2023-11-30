@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce',
-      initialRoute: 'HomeEmp',
+      initialRoute: 'Home',
       routes: {
         'Home': (context) => const MyHome(),
         'login': (context) => Login(),

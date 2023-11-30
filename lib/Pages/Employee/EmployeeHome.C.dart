@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:frontendthelastcastle/Pages/Employee/ejemplo.c.dart';
 
@@ -35,11 +36,20 @@ class _EmployyeHomeState extends State<EmployyeHome> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: Colors.purple,
               ),
-              child: Text('Menú Lateral'),
+              child: SizedBox(
+                width: 100.0,
+                height: 100.0,
+                child: ClipOval(
+                  child: Image.asset(
+                    'Assets/Image/login.jpeg',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
             ),
             _buildDrawerItem(1, 'Datos Empleado'),
             _buildDrawerItem(2, 'Producto'),
