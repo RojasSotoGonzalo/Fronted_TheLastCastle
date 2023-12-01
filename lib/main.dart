@@ -5,6 +5,7 @@ import 'package:frontendthelastcastle/firebase_options.dart';
 
 import 'Pages/Customer/CustomerHome.C.dart';
 import 'Pages/Employee/EmployeeHome.C.dart';
+import 'Pages/Employee/Promocion/NuevoPromocion.P.dart';
 import 'Pages/Employee/categoria/NuevoCategoria.E.dart';
 import 'Pages/Employee/descuento/NuevoDescuento.D.dart';
 import 'Pages/Employee/tipo/NuevoTipo.T.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce',
-      initialRoute: 'Home',
+      initialRoute: 'HomeEmp',
       routes: {
         'Home': (context) => const MyHome(),
         'login': (context) => Login(),
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         'nuevoTipo': (context) => const CreateTipo(),
         'nuevocat': (context) => const CrearCategoria(),
         'nuevodes': (context) => const CrearDescuento(),
+        'nuevopro': (context) => const CrearPromocion(),
       },
     );
   }

@@ -61,7 +61,6 @@ class Start extends ConsumerWidget {
                   if (categorias.isEmpty) {
                     return const Text('No hay categorías disponibles.');
                   }
-
                   return SizedBox(
                     height: 60,
                     child: TabBar(

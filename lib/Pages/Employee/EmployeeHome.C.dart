@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:frontendthelastcastle/Pages/Employee/ejemplo.c.dart';
 
+import 'Promocion/Promocion.P.dart';
 import 'categoria/Categoria.E.dart';
 
 import 'descuento/Descuento.D.dart';
@@ -17,7 +17,13 @@ class EmployyeHome extends StatefulWidget {
 class _EmployyeHomeState extends State<EmployyeHome> {
   int selectedIndex = 0;
   final PageController _pageController = PageController();
-  final List<Widget> pages = const [efe(), Tipo(), Categ(), Descuen()];
+  final List<Widget> pages = const [
+    efe(),
+    Tipo(),
+    Categ(),
+    Promocion(),
+    Descuen()
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -56,7 +62,7 @@ class _EmployyeHomeState extends State<EmployyeHome> {
             _buildDrawerItem(3, 'Tipo de Producto'),
             _buildDrawerItem(4, 'Marca'),
             _buildDrawerItem(5, 'Categoria'),
-            _buildDrawerItem(6, 'Promcion'),
+            _buildDrawerItem(6, 'Promocion'),
             _buildDrawerItem(7, 'Descuento'),
           ],
         ),

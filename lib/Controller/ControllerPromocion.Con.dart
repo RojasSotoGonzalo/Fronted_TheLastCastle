@@ -36,15 +36,14 @@ final promocionByIdProvider =
   }
 });
 
-Future<String> createPromocion(String namePromotion, String startDate,
-    String endDate, double discount) async {
+Future<String> createPromocion(
+    String namePromotion, String startDate, String endDate) async {
   final url = Uri.parse('$baseUrl/promocion');
   final headers = {'Content-Type': 'application/json'};
   final body = json.encode({
     'namePromotion': namePromotion,
     'startDate': startDate,
     'endDate': endDate,
-    'discount': discount,
   });
 
   try {
