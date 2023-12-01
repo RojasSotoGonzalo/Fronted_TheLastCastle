@@ -68,7 +68,7 @@ Future<void> deletePromocion(String promocionId) async {
       headers: {'Content-Type': 'application/json'},
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       print('Promoción eliminada exitosamente');
     } else {
       throw Exception(

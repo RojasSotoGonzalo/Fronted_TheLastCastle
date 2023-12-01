@@ -119,7 +119,7 @@ class EditPromocion extends ConsumerWidget {
                   'Nueva Fecha Inicio de la Promoción',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Color.fromARGB(255, 16, 161, 60),
+                    color: Color.fromARGB(255, 74, 7, 151),
                   ),
                 ),
                 DatePickerFormField(
@@ -132,7 +132,7 @@ class EditPromocion extends ConsumerWidget {
                   'Nueva Fecha Finalización de Promoción',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Color.fromARGB(255, 16, 161, 60),
+                    color: Color.fromARGB(255, 63, 15, 139),
                   ),
                 ),
                 DatePickerFormField(

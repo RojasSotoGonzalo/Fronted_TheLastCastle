@@ -1,17 +1,28 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../Controller/ControllerPromocion.Con.dart';
+import 'ListPromocion.P.dart';
 
 class Promocion extends ConsumerWidget {
   const Promocion({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Promocionlist = ref.watch(promocionProvider);
+    final promlis = ref.watch(promocionProvider);
     return Scaffold(
-      body: Promocionlist.when(
-        data: (promlis) {},
+      body: promlis.when(
+        data: (promlis) {
+          if (promlis.isNotEmpty) {
+            return ListPromocion(deslist: promlis);
+          } else {
+            return const Center(
+              child: Text('No hay Categorias Agregados'),
+            );
+          }
+        },
         error: (error, stackTrace) => const Center(
           child: Text('Error al Promocion sin Productos'),
         ),

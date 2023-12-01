@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import '../Connection/Base.C.dart';
@@ -63,9 +64,9 @@ Future<void> deleteTipoDeProducto(String tipoId) async {
       headers: {'Content-Type': 'application/json'},
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       // La solicitud DELETE fue exitosa
-      print('Tipo de producto eliminado exitosamente');
+      const Text('Tipo de producto eliminado exitosamente');
     } else {
       // La solicitud DELETE falló
       throw Exception(

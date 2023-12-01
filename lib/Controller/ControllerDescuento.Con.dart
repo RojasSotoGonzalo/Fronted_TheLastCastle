@@ -55,21 +55,32 @@ Future<String> createDescuento(double discount) async {
 
 Future<void> deleteDescuento(String descuentoId) async {
   final url = Uri.parse('$baseUrl/descuento/$descuentoId');
+  final header = {'Content-Type': 'application/json'};
 
   try {
     final response = await http.delete(
       url,
-      headers: {'Content-Type': 'application/json'},
+      headers: header,
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       print('Descuento eliminado exitosamente');
     } else {
       throw Exception(
           'Error al eliminar el descuento. Código de estado: ${response.statusCode}');
     }
   } catch (e) {
-    throw Exception('Error al realizar la solicitud DELETE: $e');
+    if (e is http.ClientException) {
+      // Manejar excepciones específicas de HTTP
+      throw Exception('Error al realizar la solicitud DELETE: ${e.message}');
+    } else if (e is FormatException) {
+      // Manejar excepciones de formato (por ejemplo, JSON mal formado)
+      throw Exception(
+          'Error de formato al procesar la respuesta: ${e.message}');
+    } else {
+      // Capturar cualquier otra excepción no manejada
+      throw Exception('Error inesperado al realizar la solicitud DELETE: $e');
+    }
   }
 }
 
@@ -86,6 +97,16 @@ Future<String> updateDescuento(String descuentoId, double discount) async {
       throw Exception('PUT request failed with status: ${response.statusCode}');
     }
   } catch (e) {
-    throw Exception('Error making PUT request: $e');
+    if (e is http.ClientException) {
+      // Manejar excepciones específicas de HTTP
+      throw Exception('Error al realizar la solicitud PUT: ${e.message}');
+    } else if (e is FormatException) {
+      // Manejar excepciones de formato (por ejemplo, JSON mal formado)
+      throw Exception(
+          'Error de formato al procesar la respuesta: ${e.message}');
+    } else {
+      // Capturar cualquier otra excepción no manejada
+      throw Exception('Error inesperado al realizar la solicitud PUT: $e');
+    }
   }
 }

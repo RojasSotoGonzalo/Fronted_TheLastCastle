@@ -80,7 +80,7 @@ Future<String> updateCategoria(String categoryId, String category) async {
 
   try {
     final response = await http.put(url, headers: headers, body: body);
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       return '¡Actualización exitosa!';
     } else {
       throw Exception('PUT request failed with status: ${response.statusCode}');

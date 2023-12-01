@@ -68,7 +68,7 @@ Future<void> deleteBrand(String brandId) async {
       headers: {'Content-Type': 'application/json'},
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       print('Marca eliminada exitosamente');
     } else {
       throw Exception(

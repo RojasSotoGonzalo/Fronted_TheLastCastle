@@ -12,8 +12,8 @@ class ListDescuento extends ConsumerWidget {
   final List<DescuentoDTO> deslist;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Future<void> eliminardescuento(String desId) async {
-      await deleteDescuento(desId);
+    Future<void> eliminardescuento(String descId) async {
+      await deleteDescuento(descId);
       ref.refresh(descuentoProvider);
     }
 
